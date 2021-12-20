@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { CircularProgress } from "@mui/material";
+import React, { useEffect } from "react";
+import NavBar from "./components/NavBar/NavBar";
+import AppRouter from "./components/routes/AppRouter";
+import { useAction } from "./hooks/useAction";
+import { useTypedSelector } from "./hooks/useTypedSelector";
 
-function App() {
+const App: React.FC = () => {
+  const { loading } = useTypedSelector((state) => state.user);
+  const { limit } = useTypedSelector((state) => state.devices);
+  const { selectedType } = useTypedSelector((state) => state.types);
+  const { selectedBrand } = useTypedSelector((state) => state.brands);
+  const {
+    checkAndFetchCart,
+    setCurrentPage,
+    fetchDevices,
+    fetchTypes,
+    fetchBrands,
+  } = useAction();
+
+  useEffect(() => {
+    fetchTypes();
+    fetchBrands();
+    fetchDevices(null, null, 1, limit);
+    checkAndFetchCart();
+  }, []);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedType, selectedBrand]);
+
+  if (loading) {
+    return (
+      <CircularProgress
+        color="primary"
+        size={70}
+        sx={{ position: "absolute", top: "50%", left: "50%" }}
+      />
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NavBar />
+      <AppRouter />
     </div>
   );
-}
+};
 
 export default App;

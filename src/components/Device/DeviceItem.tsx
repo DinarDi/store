@@ -26,7 +26,7 @@ const DeviceItem: React.FC<IDeviceItem> = ({ device }) => {
           height="150"
           image={process.env.REACT_APP_API_URL + img}
           alt="device"
-          sx={{ mt: "15px" }}
+          sx={{ mt: "15px", objectFit: "contain" }}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">

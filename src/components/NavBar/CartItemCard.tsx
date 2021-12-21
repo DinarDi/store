@@ -43,7 +43,7 @@ const CartItemCard: React.FC<ICartItemCard> = ({ item }) => {
         component="img"
         image={process.env.REACT_APP_API_URL + img}
         alt="Device"
-        sx={{ width: "70px", height: "70px", ml: "10px" }}
+        sx={{ width: "70px", height: "70px", ml: "10px", objectFit: "contain" }}
       />
       <CardContent
         sx={{

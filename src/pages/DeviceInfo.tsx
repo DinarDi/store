@@ -60,6 +60,7 @@ const DeviceInfo: React.FC = () => {
             width="400px"
             height="400px"
             alt="Device"
+            style={{ objectFit: "contain" }}
           />
         </Grid>
         <Grid item sx={{ maxWidth: "420px", textAlign: "center" }}>

@@ -15,8 +15,9 @@ const DeviceItem: React.FC<IDeviceItem> = ({ device }) => {
     <Grid item>
       <Card
         sx={{
-          maxWidth: 345,
+          width: 175,
           cursor: "pointer",
+          padding: "5px",
         }}
         variant="outlined"
         onClick={() => history.push(DEVICE_INFO_ROUTE + `/${id}`)}

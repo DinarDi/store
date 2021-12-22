@@ -10,7 +10,7 @@ const initialState: IDeviceState = {
   rows: [],
   device: {} as IDeviceInfo,
   currentPage: 1,
-  limit: 3,
+  limit: 10,
 };
 
 export const DeviceReducer = (
